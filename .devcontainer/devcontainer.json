@@ -1,0 +1,23 @@
+{
+  "name": "filterbubble-proto",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "mhutchie.git-graph",
+        "charliermarsh.ruff"
+      ]
+    }
+  },
+  "forwardPorts": [],
+  "mounts": [
+    "source=${localWorkspaceFolder}/config/.env,target=/workspace/.env,type=bind,consistency=cached"
+  ],
+  "remoteEnv": {
+    "PYTHONPATH": "/workspace"
+  }
+}
