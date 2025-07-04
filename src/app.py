@@ -86,13 +86,10 @@ def display_in_streamlit(iteration, articles):
 
 
 if st.button("自動で5ステップ実行する"):
-    for i in range(5):
-        articles = sim.step()
-        display_in_streamlit(i + 1, articles)
-        max_cat = max(sim.weights, key=sim.weights.get)
-        sim.select(max_cat)
+    sim.run_simulation(num_iterations=5, auto=True)
     st.session_state.simulator = sim
     st.rerun()
+
 
 # --- リセット ---
 st.subheader("🧼 リセット")

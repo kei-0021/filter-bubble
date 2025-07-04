@@ -56,10 +56,25 @@ class FilterBubbleSimulator:
             articles.append(article)
         return articles
 
+    def run_simulation(
+        self, num_iterations: int, auto: bool = False
+    ) -> list[dict[str, Any]]:
+        """シミュレーションを指定回数まとめて実行し、記事リストを返す."""
+        all_articles = []
+        categories = list(self.weights.keys())
+        for _ in range(num_iterations):
+            articles = self.step()
+            if auto:
+                # 重みに応じてカテゴリを1つ選択
+                chosen_cat = random.choices(
+                    categories, weights=self.weights.values(), k=1
+                )[0]
+                self.select(chosen_cat)
+            all_articles.extend(articles)
+        return all_articles
+
     def select(self, chosen_category: str, boost: float = 0.1, decay: float = 0.9):
-        """
-        ユーザー選択したカテゴリをもとに重みを更新し履歴に追加.
-        """
+        """ユーザー選択したカテゴリをもとに重みを更新し履歴に追加."""
         for cat in self.weights:
             if cat == chosen_category:
                 self.weights[cat] += boost
@@ -74,6 +89,7 @@ class FilterBubbleSimulator:
         self.selected_categories.append(chosen_category)
 
     def plot(self, save_path: str | None = None) -> Figure | None:
+        """現在の重みの履歴を積み上げ棒グラフで描画し、必要ならpngで出力する."""
         plt.figure(figsize=(12, 7))
 
         categories = list(self.weights.keys())

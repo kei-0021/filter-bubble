@@ -34,6 +34,6 @@ if __name__ == "__main__":
 
     # 自動選択モードでシミュレーションを実行
     sim.run_simulation(num_iterations=ITERATION, auto=True)
-    sim.plot()
+    sim.plot(save_path="output/weights_plot.png")
     # 必要なら記事データ保存も可能
     # save_articles_to_json(all_articles)
