@@ -25,7 +25,7 @@ def fetch_dummy(category: str, count: int) -> list[dict[str, Any]]:
     """fetch_from_newsapi のダミー実装 (実行可能にするため)"""
     return [
         {
-            "title": f"[Dummy] Article about {category} {i}",
+            "title": f"[Dummy] Article about {category}",
             "url": f"http://example.com/{category}/{i}",
         }
         for i in range(count)
