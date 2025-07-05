@@ -7,12 +7,15 @@ python3 src/main.py
 ```
 
 ## streamlitの簡易UIでフィルターバブルを体験したい場合
+- `Local URL: http://localhost:8501`を選ぶ
+- HTMLやCSSでの装飾が無いので、シンプルなUIとなっている
 ```
-python3 src/main.py
+streamlit run src/app.py
 ```
 
 ## Reactの本格UIでフィルターバブルを体験したい場合
 - `Local:   http://localhost:5173/`を選ぶ
+- こちらはHTML/CSS/JavaScriptにReactを組み合わせたリッチなUIとなっている
 ```
 npm run dev -- --host
 ```
