@@ -3,8 +3,8 @@ from typing import Any
 
 from dotenv import load_dotenv
 
-from contents_fetcher import fetch_dummy
-from contents_filtering_simulator import FilterBubbleSimulator
+from server.contents_fetcher import fetch_dummy
+from server.contents_filtering_simulator import FilterBubbleSimulator
 
 load_dotenv(dotenv_path="config/.env")
 

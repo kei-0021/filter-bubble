@@ -1,7 +1,7 @@
 import streamlit as st
 
-from contents_fetcher import fetch_dummy
-from contents_filtering_simulator import FilterBubbleSimulator
+from server.contents_fetcher import fetch_dummy
+from server.contents_filtering_simulator import FilterBubbleSimulator
 
 # --- セッション状態の初期化 ---
 if "simulator" not in st.session_state:
