@@ -4,3 +4,7 @@ src/__pycache__/
 output/
 node_modules/
 .DS_Store
+
+
+# Vite build output
+dist/
