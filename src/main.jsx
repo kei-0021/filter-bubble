@@ -1,33 +1,34 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
-import FilterBubbleZoo from "./components/zoo.jsx";
+import MenuScreen from "./components/TitleScene.jsx";
+import FilterBubbleZoo from "./components/Zoo.jsx";
 
 const App = () => {
-  const [size, setSize] = useState({
-    width: window.innerWidth * 1.0,
-    height: window.innerHeight * 0.9,
+  const [started, setStarted] = useState(false);
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
   });
 
   useEffect(() => {
     const handleResize = () => {
-      setSize({
-        width: window.innerWidth * 0.9,
-        height: window.innerHeight * 0.6,
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
       });
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return (
-    <>
-      <h1 style={{ textAlign: "center" }}>Filter Bubble Zoo</h1>
-      <FilterBubbleZoo
-        width={size.width}
-        height={size.height}
-        initialWeights={{ bird: 0.5, panda: 0.5 }}
-      />
-    </>
+  return started ? (
+    <FilterBubbleZoo
+      initialWeights={{ bird: 0.5, panda: 0.5 }}
+      width={windowSize.width * 1.0}
+      height={windowSize.height * 1.0}
+    />
+  ) : (
+    <MenuScreen onStart={() => setStarted(true)} />
   );
 };
 
@@ -36,3 +37,4 @@ ReactDOM.createRoot(document.getElementById("app")).render(
     <App />
   </React.StrictMode>
 );
+
